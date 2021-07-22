@@ -47,4 +47,12 @@ export class StorageService<T extends Model = Model> {
     localStorage.setItem(storage, JSON.stringify(_list));
     return data;
   }
+
+  public deleteOne(id: string, storage: string = Constants.STORAGE_DEFAULT) : T[] {
+    let _list = this.getAll(storage) ?? [];
+    let index = _list.findIndex(p => p.id == id);
+    if (index > -1) _list.splice(index, 1);
+    localStorage.setItem(storage, JSON.stringify(_list));
+    return _list;
+  }
 }

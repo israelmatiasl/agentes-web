@@ -86,6 +86,23 @@ export function SedesReducer(state: SedesState = initialState, action: SedesActi
         error: action.payload,
         loading: false
       };
+    case SedesActionTypes.DELETE_ITEMS:
+      return {
+        ...state,
+        loading: true
+      }
+    case SedesActionTypes.DELETE_ITEMS_SUCCESS:
+      return {
+        ...state,
+        list: action.payload,
+        loading: false
+      };
+    case SedesActionTypes.DELETE_ITEMS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
+      };
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import {
   AddSedeAction,
   AddSedeErrorAction,
-  AddSedeSuccessAction,
+  AddSedeSuccessAction, DeleteSedeAction, DeleteSedeErrorAction, DeleteSedeSuccessAction,
   EditSedeAction,
   EditSedeErrorAction,
   EditSedeSuccessAction,
@@ -74,6 +74,20 @@ export class SedesEffects {
               return new EditSedeSuccessAction(data)
             }),
             catchError(error => of(new EditSedeErrorAction(error)))
+          )
+      ),
+    );
+
+  @Effect() deleteSede$ = this.actions$
+    .pipe(
+      ofType<DeleteSedeAction>(SedesActionTypes.DELETE_ITEMS),
+      mergeMap(
+        (data) => this._sedesService.deleteOne(data.payload)
+          .pipe(
+            map(data => {
+              return new DeleteSedeSuccessAction(data)
+            }),
+            catchError(error => of(new DeleteSedeErrorAction(error)))
           )
       ),
     );

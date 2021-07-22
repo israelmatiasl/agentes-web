@@ -38,6 +38,10 @@ export class SedesService {
     return of(this.storageService.updateOne(_sede, this.storage));
   }
 
+  public deleteOne(id: string): Observable<Sede[]> {
+    return of(this.storageService.deleteOne(id, this.storage));
+  }
+
   private loadDataFromJson(): Sede[] {
         const sedes = this.storageService.getAll(this.storage);
         if (sedes) return [];

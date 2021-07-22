@@ -13,7 +13,10 @@ export enum SedesActionTypes {
   ADD_ITEMS_FAILURE = '[SEDES] Add Item Failure',
   EDIT_ITEMS = '[SEDES] Edit Item',
   EDIT_ITEMS_SUCCESS = '[SEDES] Edit Item Success',
-  EDIT_ITEMS_FAILURE = '[SEDES] Edit Item Failure'
+  EDIT_ITEMS_FAILURE = '[SEDES] Edit Item Failure',
+  DELETE_ITEMS = '[SEDES] Delete Item',
+  DELETE_ITEMS_SUCCESS = '[SEDES] Delete Item Success',
+  DELETE_ITEMS_FAILURE = '[SEDES] Delete Item Failure'
 }
 
 export class LoadSedesAction implements Action {
@@ -76,6 +79,21 @@ export class EditSedeErrorAction implements Action {
   constructor(public payload: Error) { }
 }
 
+export class DeleteSedeAction implements Action {
+  readonly type = SedesActionTypes.DELETE_ITEMS;
+  constructor(public payload: string) { }
+}
+
+export class DeleteSedeSuccessAction implements Action {
+  readonly type = SedesActionTypes.DELETE_ITEMS_SUCCESS;
+  constructor(public payload: Sede[]) { }
+}
+
+export class DeleteSedeErrorAction implements Action {
+  readonly type = SedesActionTypes.DELETE_ITEMS_FAILURE;
+  constructor(public payload: Error) { }
+}
+
 export type SedesAction =
   LoadSedesAction |
   LoadSedesSuccessAction |
@@ -88,4 +106,7 @@ export type SedesAction =
   AddSedeErrorAction |
   EditSedeAction |
   EditSedeSuccessAction |
-  EditSedeErrorAction;
+  EditSedeErrorAction |
+  DeleteSedeAction |
+  DeleteSedeSuccessAction |
+  DeleteSedeErrorAction;
