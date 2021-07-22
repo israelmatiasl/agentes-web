@@ -1,0 +1,55 @@
+<div class="row row-cols-1 mb-3">
+  <div class="col">
+    <a class="btn btn-link" routerLink="/">
+      <i class="bi bi-arrow-left-short"></i>
+      <strong>Regresar</strong>
+    </a>
+  </div>
+</div>
+
+<form [formGroup]="sedeForm" (ngSubmit)="onSubmit()">
+  <div class="row row-cols-1 row-cols-sm-2">
+    <div class="col mb-3">
+      <label class="form-label">Agencia</label>
+      <input type="text" class="form-control" name="agencia" formControlName="agencia">
+    </div>
+    <div class="col mb-3">
+      <label class="form-label">Distrito</label>
+      <input type="text" class="form-control" name="distrito" formControlName="distrito">
+    </div>
+    <div class="col mb-3">
+      <label class="form-label">Provincia</label>
+      <input type="text" class="form-control" name="provincia" formControlName="provincia">
+    </div>
+    <div class="col mb-3">
+      <label class="form-label">Departamento</label>
+      <input type="text" class="form-control" name="departamento" formControlName="departamento">
+    </div>
+    <div class="col mb-3">
+      <label class="form-label">Dirección</label>
+      <input type="text" class="form-control" name="direccion" formControlName="direccion">
+    </div>
+    <div class="col mb-3">
+      <label class="form-label">Latitud</label>
+      <input type="number" class="form-control" name="latitud" formControlName="latitud">
+    </div>
+    <div class="col mb-4">
+      <label class="form-label">Longitud</label>
+      <input type="number" class="form-control" name="longitud" formControlName="longitud">
+    </div>
+
+  </div>
+
+  <div class="row row-cols-1">
+    <div class="col">
+      <div class="d-flex justify-content-between">
+        <a type="button" class="btn btn-outline-secondary" routerLink="/">
+          Salir
+        </a>
+        <button type="submit" class="btn btn-secondary" [disabled]="sedeForm.invalid">
+          {{ sedeId ? 'Actualizar' : 'Guardar nuevo' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

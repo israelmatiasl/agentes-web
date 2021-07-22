@@ -1,0 +1,1 @@
+export { Sede } from "./sede.model";

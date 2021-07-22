@@ -1,0 +1,55 @@
+<div class="row row-cols-2 mb-3">
+  <div class="col">
+    <input type="text" [formControl]="filterSedes" class="form-control mr-2" placeholder="Buscar...">
+  </div>
+  <div class="col">
+    <div class="d-flex justify-content-end">
+      <a class="btn btn-secondary" routerLink="/add">
+        <strong>Agregar</strong>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" *ngIf="sedes$ | async as sedes">
+
+  <div *ngFor="let sede of sedes; let idx = index" class="col">
+    <div class="card shadow-sm">
+      <img [src]="'https://picsum.photos/360/150?page='+idx">
+
+      <div class="card-body">
+        <h5 class="card-title">{{ sede.agencia }}</h5>
+        <p class="card-text mb-0">{{ sede.direccion }}</p>
+        <p>
+          <small class="text-muted">{{ sede.distrito + ', ' + sede.provincia + ', ' + sede.departamento }}</small>
+        </p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <a class="btn btn-sm btn-outline-secondary me-2" routerLink="/edit/{{sede.id}}">
+              <i class="bi bi-pencil"></i> Editar
+            </a>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-success" (click)="openMap(sede)">
+            <i class="bi bi-map"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--
+<div class="modal fade" tabindex="-1" #mapModal id="mapModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        Map
+      </div>
+      <div class="modal-body">
+        Body
+      </div>
+    </div>
+  </div>
+</div>
+-->
